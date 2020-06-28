@@ -71,6 +71,7 @@ h1 {
   float: left;
   width: 100%;
   padding: 15px;
+  min-height: 300px;
 }
 
 /* Clear floats after the columns */
