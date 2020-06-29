@@ -23,8 +23,45 @@ h1 {
   text-align: center;
   border: 3px solid #254d0e;
   border-radius: 15px;
-  box-shadow: 5px 5px 5px #828282;
-  
+  box-shadow: 5px 5px 5px #828282; 
+}
+
+a:link {
+  text-decoration: none;
+  display: inline-block;
+  width: 300px;
+  color:green;
+  padding: 10px 0px 10px 10px;
+  background-color: lightgray;
+  border-radius: 25px;
+  margin: 0 0 3px 0;
+}
+
+a:visited {
+  text-decoration: none;
+  display: inline-block;
+  width: 300px;
+  color:green;
+  padding: 10px 0px 10px 10px;
+  background-color: lightgray;
+  border-radius: 25px;
+  margin: 0 0 3px 0;
+}
+
+a:hover {
+  text-decoration: none;
+  display: inline-block;
+  width: 300px;
+  padding: 5px;
+  color:lightgray;
+  padding: 10px 0px 10px 10px;
+  background-color: green;
+  border-radius: 25px;
+  margin: 0 0 3px 0;
+}
+
+li.boards {
+  list-style-type: none;
 }
 
 .figure {
@@ -67,7 +104,6 @@ h1 {
 
 /* Create three equal columns that floats next to each other */
 .column {
-  background-color: rgb(154, 236, 154);
   float: left;
   width: 100%;
   padding: 15px;

@@ -1,5 +1,5 @@
 FROM postgres:12
-MAINTAINER Harvash <harvash2004@yahoo.com>
+LABEL maintainer="Harvash <harvash2004@yahoo.com>"
 
 ENV PG_MAJOR 12
 
