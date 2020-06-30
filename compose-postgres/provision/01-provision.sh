@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
-# Provision the Kanban-life DB 
+# Provision the EMPTY DB 
+# Additional scripts for a specific DB can be added to the provision directory (Docker will run them in Alphabetical order)
 #
 # Setup monitoring ROLE
 #
@@ -15,8 +16,4 @@ psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" <<-E
   --
   -- Create Extensions
   CREATE EXTENSION pg_stat_statements;
-  --
-  -- Create Schema in titanicdb
-  --
-    CREATE SCHEMA pgkanban AUTHORIZATION postgres;
 EOSQL

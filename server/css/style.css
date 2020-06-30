@@ -11,13 +11,12 @@ header {
   letter-spacing: 1px;
   height: 8em;
   padding: 2em 10%;
-  background-image: url('kanban.jpeg');
   background-repeat: no-repeat;
 }
 
 h1 {
   display: inline;
-  color: #254d0e;
+  color: #7cb45b;
   font-weight: bold;
   font-size: 40px;
   text-align: center;
@@ -70,8 +69,7 @@ li.boards {
 
 /* Style the header */
 .header {
-  background-color: #2E86C1;
-  background-image: url('kanban.jpeg');
+  background-color: #82e96d;
   padding: 20px;
   text-align: center;
 }

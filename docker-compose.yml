@@ -7,17 +7,18 @@ services:
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-changeme}
-      PGDATA: /pgdb/data
+      PGDATA: /data
       POSTGRES_DB: pgkanban 
     volumes:
-      - pgdata:/pgdb/data
-      - pglogs:/pgdb/logs
-      - ./pgdb/scripts:/pgdb/scripts
-      - ./provision/:/docker-entrypoint-initdb.d/ 
+      - pgdata:/data
+      - pglogs:/logs
+      - type: bind
+        source: ./compose-postgres/provision
+        target: /docker-entrypoint-initdb.d/ 
     command: >
       postgres -c logging_collector=on 
       -c log_destination=stderr 
-      -c log_directory=/pgdb/logs 
+      -c log_directory=/logs 
       -c log_filename=postgresql.log 
       -c log_file_mode=0600 
       -c log_truncate_on_rotation=on 
@@ -32,8 +33,9 @@ services:
     restart: unless-stopped
 
   web:
-    conatainer-name: kanban-web
+    container_name: kanban-web
     image: kanban-web:latest
+    command: npm start
     depends_on: 
       - postgres
     ports:
@@ -43,9 +45,16 @@ services:
       DB_USER: 'postgres' 
       DB_PASS: 'changeme'
       DB_NAME: 'pgkanban'
+    networks:
+      kblnet:
+        ipv4_address: 70.10.3.30
+    restart: unless-stopped
+
   pgadmin:
     container_name: kanban-db-admin
     image: pgadmin:latest
+    depends_on: 
+      - postgres
     environment: 
       PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-harvash2004@yahoo.com}
       PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
@@ -66,4 +75,3 @@ volumes:
   pgdata:
   pglogs:
   pgadmin:
-
