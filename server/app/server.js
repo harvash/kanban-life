@@ -20,7 +20,7 @@ const pool = new Pool({
 
 
 app.use(express.static(__dirname + '/css'));
-app.use(require('./routes'))
+app.use(require(__dirname + '/routes'))
 
 // Setup Client Counter
 var numClients = 0;

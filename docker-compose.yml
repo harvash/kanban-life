@@ -3,6 +3,8 @@ version: '3.5'
 services:
   postgres:
     container_name: kanban-db
+    build:
+      context: ./compose-postgres
     image: pg-kanban:latest
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
@@ -34,6 +36,8 @@ services:
 
   web:
     container_name: kanban-web
+    build:
+      context: ./server/app
     image: kanban-web:latest
     depends_on: 
       - postgres
@@ -44,14 +48,6 @@ services:
       DB_USER: ${POSTGRES_USER:-postgres} 
       DB_PASS: ${POSTGRES_PASSWORD:-changeme}
       DB_NAME: ${POSTGRES_DB:-pgkanban}
-    volumes:
-      - type: bind
-        source: ./server
-        target: /server
-      - type: bind
-        source: ./server/provision
-        target: /docker-entrypoint-initnode
-    entrypoint: /docker-entrypoint-initnode/01-node_install.sh
     networks:
       kblnet:
         ipv4_address: 70.10.3.30

@@ -8,8 +8,9 @@ body {
 
 header {
   text-align: center;
+  background-color: lightgray;
   letter-spacing: 1px;
-  height: 8em;
+  height: 12em;
   padding: 2em 10%;
   background-repeat: no-repeat;
 }
@@ -17,12 +18,14 @@ header {
 h1 {
   display: inline;
   color: #7cb45b;
+  padding: 25px;
   font-weight: bold;
   font-size: 40px;
   text-align: center;
-  border: 3px solid #254d0e;
-  border-radius: 15px;
+  border: 5px solid #7cb45b;
+  border-radius: 25px;
   box-shadow: 5px 5px 5px #828282; 
+  vertical-align: middle;
 }
 
 a:link {
