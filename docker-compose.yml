@@ -35,16 +35,23 @@ services:
   web:
     container_name: kanban-web
     image: kanban-web:latest
-    command: npm start
     depends_on: 
       - postgres
     ports:
       - "${NODEPORT:-4001}:4001"
     environment:
       DB_HOST: '70.10.3.10'
-      DB_USER: 'postgres' 
-      DB_PASS: 'changeme'
-      DB_NAME: 'pgkanban'
+      DB_USER: ${POSTGRES_USER:-postgres} 
+      DB_PASS: ${POSTGRES_PASSWORD:-changeme}
+      DB_NAME: ${POSTGRES_DB:-pgkanban}
+    volumes:
+      - type: bind
+        source: ./server
+        target: /server
+      - type: bind
+        source: ./server/provision
+        target: /docker-entrypoint-initnode
+    entrypoint: /docker-entrypoint-initnode/01-node_install.sh
     networks:
       kblnet:
         ipv4_address: 70.10.3.30

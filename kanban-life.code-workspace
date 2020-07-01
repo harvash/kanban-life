@@ -2,6 +2,9 @@
   "folders": [
     {
       "path": "."
+    },
+    {
+      "path": "../../../OneDrive - Sherwin-Williams/UML/AdvCloudCompute/Azure_full_stack"
     }
   ]
 }
