@@ -8,4 +8,9 @@ RUN apt-get update && \
     mkdir /logs && chown -R postgres:postgres /logs && \
     mkdir /data && chown -R postgres:postgres /data
 
+WORKDIR /docker-entrypoint-initdb.d
+
 USER postgres
+
+COPY --chown=postgres:postgres ./provision/* ./
+

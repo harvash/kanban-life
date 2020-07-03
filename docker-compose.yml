@@ -5,6 +5,7 @@ services:
     container_name: kanban-db
     build:
       context: ./compose-postgres
+      dockerfile: Dockerfile.pgdb
     image: pg-kanban:latest
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
@@ -14,9 +15,7 @@ services:
     volumes:
       - pgdata:/data
       - pglogs:/logs
-      - type: bind
-        source: ./compose-postgres/provision
-        target: /docker-entrypoint-initdb.d/ 
+      - pgprov:/docker-entrypoint-initdb.d/
     command: >
       postgres -c logging_collector=on 
       -c log_destination=stderr 
@@ -55,12 +54,16 @@ services:
 
   pgadmin:
     container_name: kanban-db-admin
-    image: pgadmin:latest
+    build:
+      context: ./compose-postgres
+      dockerfile: Dockerfile.pgadmin
+    image: kanban-db-admin:latest
     depends_on: 
       - postgres
     environment: 
-      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-harvash2004@yahoo.com}
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
       PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+      PGADMIN_SERVER_JSON_FILE: ${PGADMIN_SERVER_JSON_FILE:-/pgadmin4/pgadminServers.json}
     volumes:
       - pgadmin:/var/lib/pgadmin
     ports:
@@ -77,4 +80,5 @@ networks:
 volumes:
   pgdata:
   pglogs:
+  pgprov:
   pgadmin:
