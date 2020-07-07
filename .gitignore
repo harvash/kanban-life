@@ -8,3 +8,4 @@
 *.npm
 # dotenv environment variables file
 *.env
+*_rsa*

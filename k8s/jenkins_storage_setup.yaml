@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: az-pg-managed-disk
+  name: kanban-jenkins-pv
 spec:
   accessModes:
   - ReadWriteOnce
   storageClassName: default
   resources:
     requests:
-      storage: 1Gi
+      storage: 5Gi

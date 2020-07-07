@@ -3,7 +3,7 @@
       "1": {
           "Name": "pgadmin4@pgadmin.org",
           "Group": "Servers",
-          "Host": "70.10.3.10",
+          "Host": "postgres",
           "Port": 5432,
           "MaintenanceDB": "postgres",
           "Username": "postgres",
