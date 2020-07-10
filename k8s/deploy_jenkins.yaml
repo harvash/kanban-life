@@ -31,7 +31,7 @@ spec:
         fsGroup: 1000
       containers:
       - name: jenkinsci
-        image: fskubecr.azurecr.io/jenkinsci
+        image: fskubecr.azurecr.io/jenkins:v1
         imagePullPolicy: Always
         ports:
         - name: jenkins
@@ -39,10 +39,16 @@ spec:
         volumeMounts:
         - name: jenkins-pvc
           mountPath: "/var/jenkins_home"
+        - name: ssh-keys
+          readOnly: true
+          mountPath: /etc/ssh-keys
       volumes:
         - name: jenkins-pvc
           persistentVolumeClaim:
             claimName: kanban-jenkins-pv
+        - name: ssh-keys
+          secret:
+            secretName: ssh-key-secret
         
         
         

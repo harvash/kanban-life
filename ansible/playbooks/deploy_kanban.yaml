@@ -15,6 +15,11 @@
         api_version: v1
         name: kanban
         state: present
+    - name: create Postgres headless service
+      k8s:
+        namespace: kanban
+        state: present
+        definition: "{{ lookup('file', '../../k8s/service-pg.yaml') }}"
 
     - name: deploy kanban-pg
       k8s:
@@ -22,14 +27,3 @@
         state: present
         definition: "{{ lookup('file', '../../k8s/deploy_backend.yaml') }}"
 
-    - name: deploy kanban-db-admin
-      k8s:
-        namespace: kanban
-        state: present
-        definition: "{{ lookup('file', '../../k8s/deploy_frontend.yaml') }}"
-
-    - name: deploy kanban-app
-      k8s:
-        namespace: kanban
-        state: present
-        definition: "{{ lookup('file', '../../k8s/deploy_web.yaml') }}"
