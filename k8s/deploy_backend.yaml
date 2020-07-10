@@ -51,6 +51,7 @@ spec:
   - metadata:
       name: data
     spec:
+      storageClassName: az-pg-storage-class 
       accessModes:
       - ReadWriteOnce
       resources:
