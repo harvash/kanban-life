@@ -14,7 +14,7 @@
         kind: namespace
         api_version: v1
         name: kanban
-        state: presentk
+        state: present
 
     - name: deploy kanban-pg
       k8s:
