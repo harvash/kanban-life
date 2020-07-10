@@ -30,7 +30,7 @@ spec:
         tier: backend
     spec:
       securityContext:
-        fsGroup: 1000
+        fsGroup: 992
       containers:
       - name: kanban-pg
         image: fskubecr.azurecr.io/kanban-pg
