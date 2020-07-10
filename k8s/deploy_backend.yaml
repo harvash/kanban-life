@@ -46,6 +46,8 @@ spec:
           value: changeme
         - name: POSTGRES_DB
           value: pgkanban 
+        - name: PGDATA 
+          value: /var/lib/postgresql/data/pgdata
   volumeClaimTemplates:
   - metadata:
       name: data
