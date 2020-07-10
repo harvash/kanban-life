@@ -8,7 +8,7 @@ spec:
     app: pgadmin
     tier: frontend
   ports:
-  - port: 5050
+  - port: 5051
     targetPort: 80
 ---
 apiVersion: apps/v1
