@@ -29,8 +29,6 @@ spec:
         db: postgres
         tier: backend
     spec:
-      securityContext:
-        fsGroup: 992
       containers:
       - name: kanban-pg
         image: fskubecr.azurecr.io/kanban-pg
@@ -40,7 +38,8 @@ spec:
           containerPort: 5432
         volumeMounts:
         - name: data
-          mountPath: /data
+          mountPath: /var/lib/postgresql/data
+          subPath: postgres
         env:
         - name: POSTGRES_USER
           value: postgres
@@ -48,8 +47,6 @@ spec:
           value: changeme
         - name: POSTGRES_DB
           value: pgkanban 
-        - name: PGDATA 
-          value: /data
   volumeClaimTemplates:
   - metadata:
       name: data
