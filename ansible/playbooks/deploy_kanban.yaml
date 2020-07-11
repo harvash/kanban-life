@@ -18,7 +18,6 @@
 
     - name: deploy kanban-pg
       k8s:
-        namespace: kanban
         apply: yes
         definition: "{{ lookup('file', '../../k8s/deploy_backend.yaml') }}"
 
