@@ -1,6 +1,7 @@
 # DEFAULT IGNORES
 *.DS_Store
 *.project
+*.kanban-life.code-workspace
 # NODE IGNORES
 # Dependency directories
 *node_modules/
